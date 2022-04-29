@@ -6,6 +6,7 @@ const { console } = require('./config')
 function config({ dotenvPath = "" } = {}) {
  
     try {
+        
 
 
         const jsonFromEnv = getParsedEnv(dotenvPath);
