@@ -32,13 +32,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: next
-          path: next
+          ref: main
+
 
       - id: next-version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: ${{ github.workspace }}/next/package.json
+          path: ${{ github.workspace }}/main/package.json
           prop_path: version
 
       - run: |
