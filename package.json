@@ -1,0 +1,35 @@
+{
+  "name": "nucleus-packages",
+  "private": true,
+  "description": "Byjus repository with multiple packages",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "author": "Kartik Mani",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashant9428/LERNA_PACKAGE.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prashant9428/LERNA_PACKAGE/issues"
+  },
+  "homepage": "https://github.com/prashant9428/LERNA_PACKAGE#readme",
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.2.2",
+    "conventional-github-releaser": "^3.1.5",
+    "lerna": "^4.0.0"
+  },
+  "changelog": {
+    "labels": {
+      "feature": "New Feature",
+      "bug": "Bug Fix"
+    }
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.22.0"
+  }
+}
