@@ -12,12 +12,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prashant9428/LERNA_PACKAGE.git"
+    "url": "git+https://github.com/prashant9428/LENRA_PACKAGE.git"
   },
   "bugs": {
-    "url": "https://github.com/prashant9428/LERNA_PACKAGE/issues"
+    "url": "https://github.com/prashant9428/LENRA_PACKAGE/issues"
   },
-  "homepage": "https://github.com/prashant9428/LERNA_PACKAGE#readme",
+  "homepage": "https://github.com/prashant9428/LENRA_PACKAGE#readme",
   "devDependencies": {
     "conventional-changelog-cli": "^2.2.2",
     "conventional-github-releaser": "^3.1.5",

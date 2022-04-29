@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prashant9428/LERNA_PACKAGE.git"
+    "url": "git+https://github.com/prashant9428/LENRA_PACKAGE.git"
   },
   "devDependencies": {
     "semantic-release": "^19.0.2",
