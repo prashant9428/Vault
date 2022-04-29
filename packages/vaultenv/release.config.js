@@ -6,7 +6,7 @@ module.exports = {
           },
           "generateNotes": "myNotesGenerator"
         },
-        "prepare": ["@semantic-release/npm", "@semantic-release/git"],
+        "prepare": ["@semantic-release/npm", "@semantic-release/git",'@semantic-release/commit-analyzer'],
         "verifyConditions": ["@semantic-release/git"]
       }
 }
