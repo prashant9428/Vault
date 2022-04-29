@@ -14,7 +14,7 @@ jobs:
     outputs:
       branch: ${{ env.branch }}
       is-latest-branch: ${{ env.branch == 'main' }}
-      is-next-branch: ${{ env.branch == 'next' }}
+      is-next-branch: ${{ env.branch == 'main' }}
       is-release-branch: ${{ startsWith(env.branch, 'release-') }}
       is-actionable-branch: ${{ env.branch == 'main' || env.branch == 'next' || startsWith(env.branch, 'release-') }}
 
