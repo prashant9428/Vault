@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@development
         with:
           fetch-depth: 0
       - name: Setup Node.js
@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Create Release Pull Request or Publish
-        uses: changesets/action@master
+        uses: changesets/action@development
         with:
           publish: yarn changeset publish
         env:
