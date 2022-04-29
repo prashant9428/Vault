@@ -9,7 +9,6 @@ env:
   version: 0
 
 jobs:
-  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
