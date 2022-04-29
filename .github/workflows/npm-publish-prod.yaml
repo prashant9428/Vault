@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: 'development'
+          ref: 'master'
           fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -20,7 +20,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Create Release Pull Request or Publish
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
         with:
           publish: yarn changeset publish
         env:
