@@ -1,84 +1,59 @@
-name: Handle Release Branches
+name: npackages-publish-dev
 
 on:
   push:
+    branches:
+      - development
+      
+env:
+  version: 0
 
 jobs:
-  branch-checks:
+  publish:
     runs-on: ubuntu-latest
-    steps:
-      - id: get-branch
-        run: |
-          BRANCH=($(echo ${{ github.ref }} | sed -E 's/refs\/heads\///'))
-          echo "branch=$BRANCH" >> $GITHUB_ENV
-    outputs:
-      branch: ${{ env.branch }}
-      is-latest-branch: ${{ env.branch == 'main' }}
-      is-next-branch: ${{ env.branch == 'main' }}
-      is-release-branch: ${{ startsWith(env.branch, 'release-') }}
-      is-actionable-branch: ${{ env.branch == 'main' || env.branch == 'next' || startsWith(env.branch, 'release-') }}
-
-  handle-latest:
-    needs: branch-checks
-    if: ${{ needs.branch-checks.outputs.is-latest-branch == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-  get-next-release-branch:
-    needs: branch-checks
-    if: ${{ needs.branch-checks.outputs.is-next-branch == 'true' || needs.branch-checks.outputs.is-release-branch == 'true' }}
-    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: none 
+      issues: write
+      packages: write
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: main
-
-
-      - id: next-version
-        uses: notiz-dev/github-action-json-property@release
-        with:
-          path: ${{ github.workspace }}/next/package.json
-          prop_path: version
-
-      - run: |
-          NEXT_RELEASE_BRANCH=($(echo ${{ steps.next-version.outputs.prop }} | sed -E 's/([0-9]+)\.([0-9]+).*/release-\1-\2/'))
-          echo "next-release-branch=$NEXT_RELEASE_BRANCH" >> $GITHUB_ENV
-    outputs:
-      branch: ${{ env.next-release-branch }}
-
-  create-next-release-branch:
-    needs: [branch-checks, get-next-release-branch]
-    if: ${{ needs.branch-checks.outputs.is-next-branch == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
+          persist-credentials: false
+          ref: 'development'
           fetch-depth: 0
+          token: ${{secrets.GH_ADMIN_TOKEN}}
 
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY }}
+      #     aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_KEY }}
+      #     aws-region: ap-south-1
+          
+      # - name: Secrets from aws parameter store
+      #   run: |
+      #       aws ssm get-parameters --names /development/NPMRC --with-decryption --output text --query "Parameters[*].Value" > .npmrc
+      #       ls
+      #       cat .npmrc
+
+      - name: Environment intlialize and publish
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com/
       - run: |
-          set +e
-          REMOTE_BRANCH=$(git branch -r | grep origin/${{ needs.get-next-release-branch.outputs.branch }})
-          if [[ ! -z $REMOTE_BRANCH ]]; then git push origin --delete ${{ needs.get-next-release-branch.outputs.branch }}; fi
-          echo 'Pushing branch ${{ needs.get-next-release-branch.outputs.branch }}...'
-          git push -f origin ${{ needs.branch-checks.outputs.branch }}:${{ needs.get-next-release-branch.outputs.branch }}
-    outputs:
-      branch: ${{ needs.get-next-release-branch.outputs.branch }}
+          export GITHUB_AUTH="${{ secrets.GH_ADMIN_TOKEN }}"
+          git config user.name "${{ secrets.GH_ADMIN_USERNAME }}"
+          git config user.email "${{ secrets.GH_ADMIN_EMAIL }}"
+          git remote set-url origin https://${{secrets.GH_ADMIN_USERNAME}}:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+          echo "Package : Publishing"
+          npm install -g semantic-release semantic-release-monorepo
+          npx lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo -b development
+          # npx lerna version --conventional-prerelease --preid beta --yes --force-git-tag --no-private --no-changelog
 
-  next-release-branch-check:
-    if: ${{ always() }}
-    needs: [branch-checks, get-next-release-branch]
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          IS_NEXT_RELEASE_BRANCH=${{ needs.branch-checks.outputs.branch == needs.get-next-release-branch.outputs.branch }}
-          echo "is-next-release-branch=$IS_NEXT_RELEASE_BRANCH" >> $GITHUB_ENV
-      - if: ${{ env.is-next-release-branch == 'true' }}
-        run: echo "relevant-base-branch=next" >> $GITHUB_ENV
-
-      - if: ${{ env.is-next-release-branch == 'true' }}
-        run: |
-          echo 'WARNING: Do not push directly to the `${{ needs.branch-checks.outputs.branch }}` branch. This branch is created and force-pushed over after pushing to the `${{ env.relevant-base-branch }}` branch and the changes you just pushed will be lost.'
-          exit 1
-    outputs:
-      check: ${{ env.is-next-release-branch }}
+          echo "Package : Published"
+        env: 
+          GH_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
