@@ -1,4 +1,4 @@
-name: npackages-publish-dev
+name: npackages-publish-prod
 
 on:
   push:
@@ -52,6 +52,7 @@ jobs:
           # npx lerna version --conventional-prerelease --preid beta --yes --force-git-tag --no-private --no-changelog
 
           echo "Package : Published"
+ 
         env: 
           GH_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
