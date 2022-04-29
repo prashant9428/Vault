@@ -38,7 +38,7 @@ jobs:
       - id: next-version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: ${{ github.workspace }}/main/package.json
+          path: ${{ github.workspace }}/next/package.json
           prop_path: version
 
       - run: |
