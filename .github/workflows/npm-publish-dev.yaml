@@ -35,12 +35,12 @@ jobs:
       #       aws ssm get-parameters --names /development/NPMRC --with-decryption --output text --query "Parameters[*].Value" > .npmrc
       #       ls
       #       cat .npmrc
-
       - name: Environment intlialize and publish
         uses: actions/setup-node@v2
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
+
       - run: |
           export GITHUB_AUTH="${{ secrets.GH_ADMIN_TOKEN }}"
           git config user.name "${{ secrets.GH_ADMIN_USERNAME }}"
