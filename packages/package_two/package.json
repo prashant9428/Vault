@@ -1,6 +1,6 @@
 {
   "name": "@lerna_package/package_two",
-  "version": "0.1.15-canary.26",
+  "version": "0.1.15-canary.27",
   "description": "Vault env is a npm library to fetch environment variables.",
   "main": "index.js",
   "scripts": {
