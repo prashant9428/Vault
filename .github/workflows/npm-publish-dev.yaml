@@ -1,4 +1,4 @@
-name: npackages-publish-dev
+name: npackages-publish-development
 
 on:
   push:
