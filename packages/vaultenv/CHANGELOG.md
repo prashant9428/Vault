@@ -577,6 +577,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * added a project ([325ea1b](https://github.com/prashant9428/LENRA_PACKAGE/commit/325ea1b250ec7a9031d84a0673a6aa71e043c11a))
 * added a project ([6a255f9](https://github.com/prashant9428/LENRA_PACKAGE/commit/6a255f932d6cdd8727136cb81c7cd43a3a86d7e4))
 * added a project ([8c8bbf6](https://github.com/prashant9428/LENRA_PACKAGE/commit/8c8bbf6c77b0f12f83a8872e658e523377df7e8b))
+<<<<<<< HEAD
+* added lerna in dev pipeline ([099ae00](https://github.com/prashant9428/LENRA_PACKAGE/commit/099ae004374ddc9aebe9bc6a9efb48621c4b53f7))
+=======
+>>>>>>> development
 * added lerna in dev pipeline ([9046616](https://github.com/prashant9428/LENRA_PACKAGE/commit/9046616282cabf638e935389a4643609a39b729c))
 * added lerna in dev pipeline ([cfb2615](https://github.com/prashant9428/LENRA_PACKAGE/commit/cfb2615ada1d834d5a542811e86af5dc689ce52b))
 * added space in index ([8c91354](https://github.com/prashant9428/LENRA_PACKAGE/commit/8c913544ab1bdbeb46ea4302bc6359da3f1173e3))
