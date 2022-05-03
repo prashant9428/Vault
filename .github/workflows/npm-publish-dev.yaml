@@ -52,9 +52,9 @@ jobs:
           # npm install -g semantic-release semantic-release-monorepo @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/github @semantic-release/npm
           # npx lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo -b development --tag-format='${LERNA_PACKAGE_NAME}-beta-\${version}'
           # npx lerna version --conventional-prerelease --preid beta --yes --force-git-tag --no-private --no-changelog
-          npx lerna version prerelease --preid beta --force-publish --yes 
-          git fetch --all
-          release --pre --skip-questions
+          # npx lerna version prerelease --preid canary --force-publish --yes 
+          npm i -f
+          lerna publish --conventional-commits --conventional-prerelease --dist-tag=next --exact
           echo "Package : Published"
  
         env: 
