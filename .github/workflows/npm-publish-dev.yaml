@@ -54,7 +54,7 @@ jobs:
           # npx lerna version --conventional-prerelease --preid beta --yes --force-git-tag --no-private --no-changelog
           # npx lerna version prerelease --preid canary --force-publish --yes 
           npm i -f
-          lerna publish --conventional-commits --conventional-prerelease --dist-tag=next --exact
+          lerna publish --conventional-commits --conventional-prerelease --dist-tag=next --exact --yes
           echo "Package : Published"
  
         env: 
