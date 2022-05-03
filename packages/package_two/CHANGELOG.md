@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.15-canary.85](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/package_two@0.1.15-canary.84...@lerna_package/package_two@0.1.15-canary.85) (2022-05-03)
+
+**Note:** Version bump only for package @lerna_package/package_two
+
+
+
+
+
 ## [0.1.15-canary.84](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/package_two@0.1.15-canary.83...@lerna_package/package_two@0.1.15-canary.84) (2022-05-03)
 
 **Note:** Version bump only for package @lerna_package/package_two
