@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.15-canary.72](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.15-canary.71...@lerna_package/vaultenv@0.1.15-canary.72) (2022-05-03)
+
+**Note:** Version bump only for package @lerna_package/vaultenv
+
+
+
+
+
 ## [0.1.15-canary.71](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.15-canary.70...@lerna_package/vaultenv@0.1.15-canary.71) (2022-05-03)
 
 
