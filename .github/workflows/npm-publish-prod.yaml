@@ -50,7 +50,7 @@ jobs:
           echo "Package : Publishing"
           # npm install -g semantic-release semantic-release-monorepo @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/github @semantic-release/npm
           # npx lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo -b main --tag-format='${LERNA_PACKAGE_NAME}-\${version}'
-          git pull && lerna version prerelease --preid canary --force-publish && release --pre --skip-questions
+          lerna version --force-publish --yes 
           # npx lerna version --conventional-prerelease --preid beta --yes --force-git-tag --no-private 
 
           echo "Package : Published"
