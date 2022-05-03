@@ -53,7 +53,7 @@ jobs:
           # npx lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo -b development --tag-format='${LERNA_PACKAGE_NAME}-beta-\${version}'
           # npx lerna version --conventional-prerelease --preid beta --yes --force-git-tag --no-private --no-changelog
           npx lerna version prerelease --preid beta --force-publish --yes 
-          git fethc --all
+          git fetch --all
           release --pre --skip-questions
           echo "Package : Published"
  
