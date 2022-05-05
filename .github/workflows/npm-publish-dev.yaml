@@ -51,11 +51,11 @@ jobs:
 
           npm run github:prerelease 
 
-           echo "---running sh closed---- 
+          echo "---running sh closed----"
 
           npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag
           
-          echo "---running sh started---- 
+          echo "---running sh started----"
           npm run github:prerelease    
           echo "Package : Published"
  
