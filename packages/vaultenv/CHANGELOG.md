@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-beta.5](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.0-beta.4...@lerna_package/vaultenv@0.1.0-beta.5) (2022-05-05)
+
+
+### Bug Fixes
+
+* added a space in index file ([3d1e9ed](https://github.com/prashant9428/LENRA_PACKAGE/commit/3d1e9edab55732f3ca41db5156e2790a88314241))
+* added a space in index file ([dcec262](https://github.com/prashant9428/LENRA_PACKAGE/commit/dcec262fec354a5489ca9a1ac26fb41e1bbb58c0))
+* added changelog part aswell ([a571610](https://github.com/prashant9428/LENRA_PACKAGE/commit/a5716102f42df7b2280841e586107b9b30da0e67))
+
+
+
+
+
 # [0.1.0-beta.4](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.0-beta.3...@lerna_package/vaultenv@0.1.0-beta.4) (2022-05-05)
 
 
