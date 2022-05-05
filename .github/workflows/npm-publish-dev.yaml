@@ -48,7 +48,8 @@ jobs:
           git config user.email "${{ secrets.GH_ADMIN_EMAIL }}"
           git remote set-url origin https://${{secrets.GH_ADMIN_USERNAME}}:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
           echo "Package : Publishing"
-          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-private 
+          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag
+          
           npm run github:prerelease    
           echo "Package : Published"
  
