@@ -37,7 +37,7 @@ for item in $PACKAGE_CHANGE
     REPO_NAME="LENRA_PACKAGE"
 
     API_JSON=$(printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","draft": %s,"prerelease": %s, "generate_release_notes": %s, "body": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION"  "$DRAFT" "$PRE" "$GENERATE_RELEASE_NOTES" "$BODY")
-    API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}'  -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
+    API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secret.GH_ADMIN_TOKEN }}'  -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
     echo "$API_RESPONSE_STATUS"
   done
 
