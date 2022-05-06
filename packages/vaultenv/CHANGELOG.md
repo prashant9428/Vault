@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-beta.15](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.0-beta.14...@lerna_package/vaultenv@0.1.0-beta.15) (2022-05-06)
+
+
+### Bug Fixes
+
+* updated the production pipeline ([5c758ac](https://github.com/prashant9428/LENRA_PACKAGE/commit/5c758ac8de660c85190fe0dc71d823551ae96c24))
+* updated the production pipeline ([b82eba9](https://github.com/prashant9428/LENRA_PACKAGE/commit/b82eba99d63414ba20312893c01d2bfcf993056c))
+
+
+
+
+
 # [0.1.0-beta.14](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.0-beta.13...@lerna_package/vaultenv@0.1.0-beta.14) (2022-05-06)
 
 
