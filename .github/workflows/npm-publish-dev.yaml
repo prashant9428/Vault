@@ -56,12 +56,16 @@ jobs:
 
           BODY=""
 
-          array=(${{join('$(github.event.commits.*.message)',' ') }})
-          echo "array : ${array}"
+          array=(${{join(github.event.commits.*.message,',') }})
+          
           for i in "${array[@]}"
           do
             echo "value: ${i}"
-            BODY="${BODY}${i}\n*"
+            if [[ "${i}" != "," ]]
+            then
+              BODY="${BODY} \n"
+            fi
+            BODY="${BODY} ${i}"
           done
 
           echo "Release Body ${BODY}"
