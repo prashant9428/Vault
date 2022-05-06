@@ -6,9 +6,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [0.1.0-beta.11](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/package_two@0.1.0-beta.10...@lerna_package/package_two@0.1.0-beta.11) (2022-05-06)
 
 
-### Bug Fixes
-
-* updated the bash script ([d3d72ec](https://github.com/prashant9428/LENRA_PACKAGE/commit/d3d72ec2ca952dca827ae8046215dbb299d538e0))
 
 
 
