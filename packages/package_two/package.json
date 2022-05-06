@@ -1,5 +1,5 @@
 {
-  "name": "@lerna_package/vaultenv",
+  "name": "@lerna_package/package_two",
   "version": "0.1.0-beta.9",
   "description": "Vault env is a npm library to fetch environment variables.",
   "main": "index.js",
