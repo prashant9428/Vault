@@ -63,8 +63,8 @@ jobs:
           #   sls deploy -s dev
 
             DRAFT="false"
-            PRE="true"
-            BRANCH="development"
+            PRE="false"
+            BRANCH="main"
             GENERATE_RELEASE_NOTES="true"
             REPO_OWNER="prashant9428"
             REPO_NAME="LENRA_PACKAGE"
