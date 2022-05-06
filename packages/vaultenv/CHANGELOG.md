@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0-beta.0](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.1-beta.0...@lerna_package/vaultenv@0.2.0-beta.0) (2022-05-06)
+
+
+### Features
+
+* added space in both the packages ([df6eda0](https://github.com/prashant9428/LENRA_PACKAGE/commit/df6eda07495e5fa463fdd7419949843a268798af))
+
+
+
+
+
 ## [0.1.1-beta.0](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/vaultenv@0.1.0...@lerna_package/vaultenv@0.1.1-beta.0) (2022-05-06)
 
 **Note:** Version bump only for package @lerna_package/vaultenv
