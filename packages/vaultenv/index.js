@@ -11,6 +11,8 @@ function config({ dotenvPath = "" } = {}) {
 
 
         
+
+        
         const jsonFromEnv = getParsedEnv(dotenvPath);
         const { isKeyFound, notFoundAttr } = isRequiredKeyPresent(jsonFromEnv);
         if (!isKeyFound) return logger.error(console.color.yellow, `${console.emojis.siren}Vaultenv Warning:Environment variable [${notFoundAttr.join(",")}] not found! ${console.emojis.siren}`);
