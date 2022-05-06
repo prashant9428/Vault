@@ -56,7 +56,7 @@ jobs:
 
           BODY=""
 
-          array=(${{join("$(github.event.commits.*.message)",' ') }})
+          array=(${{join('${github.event.commits.*.message}',' ') }})
           echo "array : ${array}"
           for i in "${array[@]}"
           do
