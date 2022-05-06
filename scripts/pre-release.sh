@@ -35,7 +35,6 @@ do
   DRAFT="false"
   PRE="true"
   BRANCH="development"
-  GITHUB_ACCESS_TOKEN= "token ${secrets.GH_ADMIN_TOKEN}"
   GENERATE_RELEASE_NOTES:"true"
   REPO_OWNER="prashant9428"
   REPO_NAME="LENRA_PACKAGE"
