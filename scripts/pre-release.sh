@@ -28,6 +28,7 @@ do
   location=$(echo $item | grep -o '"location":"[^"]*' | grep -o '[^"]*$')
   echo "${location}"
   cd "${location}"
+  PACKAGE_NAME=$(node -p -e "require('./package.json').name")
   NODE_VERSION=$(node -p -e "require('./package.json').version")
   echo $NODE_VERSION
 #   sls deploy -s dev
