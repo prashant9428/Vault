@@ -3,7 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## [0.1.1](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/package_two@0.1.0-beta.11...@lerna_package/package_two@0.1.1) (2022-05-06)
+
 ## [0.1.1-beta.0](https://github.com/prashant9428/LENRA_PACKAGE/compare/@lerna_package/package_two@0.1.0-beta.11...@lerna_package/package_two@0.1.1-beta.0) (2022-05-06)
+
 
 **Note:** Version bump only for package @lerna_package/package_two
 
