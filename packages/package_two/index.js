@@ -27,6 +27,8 @@ function config({ dotenvPath = "" } = {}) {
         return logger.error(console.color.yellow, `${console.emojis.siren} Vaultenv warning: ${error.message} ${console.emojis.siren}`);
     }
 
+
+    
 }
 
 module.exports = {
