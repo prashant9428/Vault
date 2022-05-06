@@ -65,7 +65,11 @@ jobs:
             then
               BODY="${BODY} \n"
             fi
-            BODY="${BODY} ${i}"
+            if [[ "${i}" != "," ]]
+            then
+              BODY="${BODY} ${i}"
+            fi
+            
           done
 
           echo "Release Body ${BODY}"
