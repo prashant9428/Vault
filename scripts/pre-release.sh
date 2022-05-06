@@ -41,7 +41,7 @@ do
   REPO_NAME="LENRA_PACKAGE"
 
   API_JSON=$(printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","draft": %s,"prerelease": %s, "generate_release_notes": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION"  "$DRAFT" "$PRE" "$GENERATE_RELEASE_NOTES")
-  API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization': "$GITHUB_ACCESS_TOKEN"  -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
+  API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token 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'  -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
   echo "$API_RESPONSE_STATUS"
 done
 
