@@ -58,8 +58,9 @@ jobs:
             location=$(echo $item | grep -o '"location":"[^"]*' | grep -o '[^"]*$')
             echo "${location}"
             cd "${location}"
-            NODE_VERSION=$(node -p -e "require('./package.json').version")
-            echo $NODE_VERSION
+            PACKAGE_NAME=$(node -p -e "require('./package.json').name")
+            VERSION=$(node -p -e "require('./package.json').version")
+            NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
           #   sls deploy -s dev
 
             DRAFT="false"
