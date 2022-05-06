@@ -52,7 +52,7 @@ jobs:
           echo $PACKAGE_CHANGE
 
           npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-changelog
-          auto changelog
+          
           echo "---running sh started----"
 
           BODY=""
