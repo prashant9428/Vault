@@ -82,20 +82,21 @@ jobs:
             location=$(echo $item | grep -o '"location":"[^"]*' | grep -o '[^"]*$')
             echo "${location}"
             cd "${location}"
-            auto changelog
+           
             PACKAGE_NAME=$(node -p -e "require('./package.json').name")
             VERSION=$(node -p -e "require('./package.json').version")
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
-          #   sls deploy -s dev
-
+      
+            auto changelog --title $NODE_VERSION
+            
             DRAFT="false"
-            PRE="true"
-            BRANCH="development"
+            PRE="false"
+            BRANCH="main"
             GENERATE_RELEASE_NOTES="false"
             REPO_OWNER="prashant9428"
             REPO_NAME="LENRA_PACKAGE"
 
-            API_JSON=$(printf '{"tag_name": "v%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION" "$BODY" "$DRAFT" "$PRE" )
+            API_JSON=$(printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION" "$BODY" "$DRAFT" "$PRE" )
             API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}' --header 'Content-Type: application/json' -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
             echo "$API_RESPONSE_STATUS"
           done
