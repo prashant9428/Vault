@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/prashant9428/LENRA_PACKAGE#readme",
   "devDependencies": {
+    "auto": "^10.36.5",
     "conventional-changelog-cli": "^2.2.2",
     "conventional-github-releaser": "^3.1.5",
     "lerna": "^4.0.0"

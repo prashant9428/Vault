@@ -43,6 +43,8 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - run: |
+          npm i -g auto
+          export GH_TOKEN=${{secrets.GH_ADMIN_TOKEN}}
           git config user.name "${{ secrets.GH_ADMIN_USERNAME }}"
           git config user.email "${{ secrets.GH_ADMIN_EMAIL }}"
           git remote set-url origin https://${{secrets.GH_ADMIN_USERNAME}}:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
@@ -50,8 +52,30 @@ jobs:
           PACKAGE_CHANGE=$(lerna changed  --ndjson)
           echo $PACKAGE_CHANGE
 
-          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag
+          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-changelog
+          auto changelog
+          
           echo "---running sh started----"
+
+          BODY=""
+
+          array=(${{join(github.event.commits.*.message,' , ') }})
+          
+          for i in "${array[@]}"
+          do
+            echo "value: ${i}"
+            if [[ "${i}" == "," ]]
+            then
+              BODY="${BODY} \n"
+            fi
+            if [[ "${i}" != "," ]]
+            then
+              BODY="${BODY} ${i}"
+            fi
+            
+          done
+
+          echo "Release Body ${BODY}"
 
           for item in $PACKAGE_CHANGE
           do
@@ -66,14 +90,15 @@ jobs:
             DRAFT="false"
             PRE="true"
             BRANCH="development"
-            GENERATE_RELEASE_NOTES="true"
+            GENERATE_RELEASE_NOTES="false"
             REPO_OWNER="prashant9428"
             REPO_NAME="LENRA_PACKAGE"
 
-            API_JSON=$(printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","draft": %s,"prerelease": %s, "generate_release_notes": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION"  "$DRAFT" "$PRE" "$GENERATE_RELEASE_NOTES")
-            API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}'  -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
+            API_JSON=$(printf '{"tag_name": "v%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION" "$BODY" "$DRAFT" "$PRE" )
+            API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}' --header 'Content-Type: application/json' -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
             echo "$API_RESPONSE_STATUS"
           done
+
 
           echo "---running sh stopped----"
         env: 
