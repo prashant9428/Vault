@@ -43,8 +43,8 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - run: |
-          npm i -g auto
           export GH_TOKEN=${{secrets.GH_ADMIN_TOKEN}}
+          npm i -g auto        
           git config user.name "${{ secrets.GH_ADMIN_USERNAME }}"
           git config user.email "${{ secrets.GH_ADMIN_EMAIL }}"
           git remote set-url origin https://${{secrets.GH_ADMIN_USERNAME}}:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
@@ -52,7 +52,11 @@ jobs:
           PACKAGE_CHANGE=$(lerna changed  --ndjson)
           echo $PACKAGE_CHANGE
 
+<<<<<<< Updated upstream
           npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-changelog
+=======
+          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-changelog 
+>>>>>>> Stashed changes
           
           echo "---running sh started----"
 
@@ -85,8 +89,9 @@ jobs:
             PACKAGE_NAME=$(node -p -e "require('./package.json').name")
             VERSION=$(node -p -e "require('./package.json').version")
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
+            echo "auto started"
             auto changelog --title "${NODE_VERSION}"
-
+            echo "auto end"
             DRAFT="false"
             PRE="true"
             BRANCH="development"
