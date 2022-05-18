@@ -87,7 +87,9 @@ jobs:
             VERSION=$(node -p -e "require('./package.json').version")
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
       
-            auto changelog  
+            echo "auto started"
+            auto changelog
+            echo "auto end"
             
             DRAFT="false"
             PRE="false"
