@@ -7,11 +7,6 @@ function config({ dotenvPath = "" } = {}) {
  
     try {
 
-
-
-        
-
-
         
 
         
