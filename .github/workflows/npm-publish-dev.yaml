@@ -89,7 +89,6 @@ jobs:
             echo "auto started"
             auto changelog --title "${NODE_VERSION}"
             echo "checking changelog"
-            cat CHANGELOG.md
             echo "auto end"
             DRAFT="false"
             PRE="true"
