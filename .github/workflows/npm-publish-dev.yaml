@@ -88,9 +88,7 @@ jobs:
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
             echo "auto started"
             auto changelog --title "${NODE_VERSION}"
-            git add .
-            git commit -m"fix: added changelog"
-            git push
+            cat CHANGELOG.md
             echo "auto end"
             DRAFT="false"
             PRE="true"
