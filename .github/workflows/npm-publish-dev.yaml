@@ -52,11 +52,7 @@ jobs:
           PACKAGE_CHANGE=$(lerna changed  --ndjson)
           echo $PACKAGE_CHANGE
 
-<<<<<<< Updated upstream
-          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-changelog
-=======
           npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes --force-git-tag --no-changelog 
->>>>>>> Stashed changes
           
           echo "---running sh started----"
 
