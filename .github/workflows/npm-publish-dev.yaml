@@ -43,8 +43,9 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - run: |
-          export GH_TOKEN=${{secrets.GH_ADMIN_TOKEN}}
-          npm i -g auto        
+          
+          npm i -g auto  
+          export GH_TOKEN=${{secrets.GH_ADMIN_TOKEN}}      
           git config user.name "${{ secrets.GH_ADMIN_USERNAME }}"
           git config user.email "${{ secrets.GH_ADMIN_EMAIL }}"
           git remote set-url origin https://${{secrets.GH_ADMIN_USERNAME}}:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
@@ -87,6 +88,9 @@ jobs:
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
             echo "auto started"
             auto changelog --title "${NODE_VERSION}"
+            git add .
+            git commit -m"fix: added changelog"
+            git push
             echo "auto end"
             DRAFT="false"
             PRE="true"
