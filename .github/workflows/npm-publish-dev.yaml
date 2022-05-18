@@ -88,6 +88,7 @@ jobs:
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
             echo "auto started"
             auto changelog --title "${NODE_VERSION}"
+            echo "checking changelog"
             cat CHANGELOG.md
             echo "auto end"
             DRAFT="false"
@@ -101,6 +102,10 @@ jobs:
             API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}' --header 'Content-Type: application/json' -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
             echo "$API_RESPONSE_STATUS"
           done
+
+          git add .
+          git commit -m"fix: updated changelog"
+          git push
 
 
           echo "---running sh stopped----"
