@@ -1,9 +1,10 @@
 name: npackages-publish-dev
 
 on:
-  push:
-    branches:
+  pull_request:
+    branches: 
       - development
+    types: [closed]
       
 env:
   version: 0
