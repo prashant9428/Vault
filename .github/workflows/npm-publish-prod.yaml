@@ -2,8 +2,9 @@ name: npackages-publish-prod
 
 on:
   pull_request:
-    branches:
+    branches: 
       - main
+    types: [closed]
       
 env:
   version: 0

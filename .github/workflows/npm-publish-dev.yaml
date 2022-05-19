@@ -2,8 +2,9 @@ name: npackages-publish-dev
 
 on:
   pull_request:
-    branches:
+    branches: 
       - development
+    types: [closed]
       
 env:
   version: 0
