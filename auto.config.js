@@ -11,7 +11,7 @@ module.exports = {
   },
   "release":{
     
-    "prerelease": true,
+    "prerelease": false,
    
   }
 }
