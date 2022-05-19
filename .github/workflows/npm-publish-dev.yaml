@@ -86,13 +86,8 @@ jobs:
             PACKAGE_NAME=$(node -p -e "require('./package.json').name")
             VERSION=$(node -p -e "require('./package.json').version")
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
-            auto changelog
-            git add -A
-            git commit -m "chore(release): $VERSION [skip ci]"
-            npm version $VERSION -m "chore(release): %s [skip ci]"
-            git push *** HEAD:main --tags
-            VERSION_NO=`node -pe "require('./package.json').version"`
-            auto release --use-version $VERSION_NO
+            auto release --use-version $NODE_VERSION
+            
             # echo "auto started"
             # auto changelog --title "${NODE_VERSION}"
             # echo "checking changelog"
@@ -107,12 +102,6 @@ jobs:
             # API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}' --header 'Content-Type: application/json' -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
             # echo "$API_RESPONSE_STATUS"
           done
-
-          git add .
-          git commit -m"fix: updated changelog"
-          git push
-
-
           echo "---running sh stopped----"
         env: 
           GH_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
