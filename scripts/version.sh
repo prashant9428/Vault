@@ -26,3 +26,24 @@ do
   VERSION="${PACKAGE_NAME}@${NODE_VERSION}"
   echo $VERSION
 done
+
+
+BODY=""
+
+          array=(${{join(github.event.commits.*.message,' , ') }})
+          
+          for i in "${array[@]}"
+          do
+            echo "value: ${i}"
+            if [[ "${i}" == "," ]]
+            then
+              BODY="${BODY} \n"
+            fi
+            if [[ "${i}" != "," ]]
+            then
+              BODY="${BODY} ${i}"
+            fi
+            
+          done
+
+          echo "Release Body ${BODY}"

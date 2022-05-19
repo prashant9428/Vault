@@ -1,4 +1,4 @@
-{
+module.exports={
   "prereleaseBranches": ["development"],
   "changelog": {  
     "message": "string"

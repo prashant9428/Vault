@@ -1,15 +1,16 @@
 name: npackages-publish-prod
 
 on:
-  push:
-    branches:
+  pull_request:
+    branches: 
       - main
+    types: [closed]
       
 env:
   version: 0
 
 jobs:
-  publish:
+  semantic-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -57,26 +58,6 @@ jobs:
           
           echo "---running sh started----"
 
-          BODY=""
-
-          array=(${{join(github.event.commits.*.message,' , ') }})
-          
-          for i in "${array[@]}"
-          do
-            echo "value: ${i}"
-            if [[ "${i}" == "," ]]
-            then
-              BODY="${BODY} \n"
-            fi
-            if [[ "${i}" != "," ]]
-            then
-              BODY="${BODY} ${i}"
-            fi
-            
-          done
-
-          echo "Release Body ${BODY}"
-
           for item in $PACKAGE_CHANGE
           do
             location=$(echo $item | grep -o '"location":"[^"]*' | grep -o '[^"]*$')
@@ -86,21 +67,9 @@ jobs:
             PACKAGE_NAME=$(node -p -e "require('./package.json').name")
             VERSION=$(node -p -e "require('./package.json').version")
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
+            auto changelog --title $NODE_VERSION
             auto release --use-version $NODE_VERSION
-            
-            # echo "auto started"
-            # auto changelog --title "${NODE_VERSION}"
-            # echo "checking changelog"
-            # echo "auto end"
-            # DRAFT="false"
-            # PRE="true"
-            # BRANCH="main"
-            # GENERATE_RELEASE_NOTES="false"
-            # REPO_OWNER="prashant9428"
-            # REPO_NAME="LENRA_PACKAGE"
-            # API_JSON=$(printf '{"tag_name": "v%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$NODE_VERSION" "$BRANCH" "$NODE_VERSION" "$BODY" "$DRAFT" "$PRE" )
-            # API_RESPONSE_STATUS=$(curl --data "$API_JSON" --header 'Accept: application/vnd.github.v3+json' --header 'Authorization: token ${{ secrets.GH_ADMIN_TOKEN }}' --header 'Content-Type: application/json' -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
-            # echo "$API_RESPONSE_STATUS"
+
           done
           echo "---running sh stopped----"
  
