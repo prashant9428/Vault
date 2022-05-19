@@ -1,7 +1,7 @@
 name: npackages-publish-prod
 
 on:
-  push:
+  pull_request:
     branches:
       - main
       
