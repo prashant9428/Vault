@@ -67,7 +67,6 @@ jobs:
             PACKAGE_NAME=$(node -p -e "require('./package.json').name")
             VERSION=$(node -p -e "require('./package.json').version")
             NODE_VERSION="${PACKAGE_NAME}@${VERSION}"
-            auto changelog --title $NODE_VERSION
             auto release --use-version $NODE_VERSION
 
           done
