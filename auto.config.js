@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   "prereleaseBranches": ["development"],
   "changelog": {  
     "message": "string"
@@ -10,6 +10,8 @@ module.exports={
     "onlyGraduateWithReleaseLabel": true
   },
   "release":{
-    "prerelease": true
+    
+    "prerelease": true,
+   
   }
 }

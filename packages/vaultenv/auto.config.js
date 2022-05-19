@@ -10,6 +10,8 @@ module.exports = {
     "onlyGraduateWithReleaseLabel": true
   },
   "release":{
-    "prerelease": true
+    
+    "prerelease": true,
+   
   }
 }
